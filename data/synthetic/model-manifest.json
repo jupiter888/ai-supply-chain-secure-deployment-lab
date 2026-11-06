@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "component_id": "model-research-assistant-v1",
+  "component_type": "model",
+  "name": "Synthetic Research Assistant",
+  "version": "1.0.0",
+  "owner": "ARI Model Engineering",
+  "source": {
+    "source_type": "internal",
+    "uri": "synthetic://ari/models/research-assistant/1.0.0",
+    "publisher": "Aster Research Institute"
+  },
+  "artifact": {
+    "filename": "research-assistant.bin",
+    "media_type": "application/octet-stream",
+    "digest_algorithm": "sha256",
+    "expected_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "size_bytes": 1024
+  },
+  "provenance": {
+    "claimed_builder": "ARI Synthetic Model Builder",
+    "claimed_source_revision": "synthetic-revision-001",
+    "attestation_reference": null,
+    "verification_status": "unverified"
+  },
+  "license": {
+    "identifier": "LicenseRef-Synthetic-Internal",
+    "review_status": "unreviewed"
+  },
+  "dependencies": [],
+  "governance": {
+    "risk_owner": "ARI AI Risk Owner",
+    "criticality": "high",
+    "data_classification": "internal",
+    "risk_acceptance_status": "not_assessed"
+  },
+  "inventory_status": "unverified"
+}

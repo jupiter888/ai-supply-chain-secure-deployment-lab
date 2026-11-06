@@ -1,0 +1,267 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/project8/component-inventory.schema.json",
+  "title": "Project 8 AI Component Inventory Registration Schema",
+  "description": "Strict registration contract for synthetic AI supply-chain components. Structural validity does not establish artifact trust, provenance authenticity, or deployment authorization.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "component_id",
+    "component_type",
+    "name",
+    "version",
+    "owner",
+    "source",
+    "artifact",
+    "provenance",
+    "license",
+    "dependencies",
+    "governance",
+    "inventory_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "component_id": {
+      "$ref": "#/$defs/componentIdentifier"
+    },
+    "component_type": {
+      "type": "string",
+      "enum": [
+        "model",
+        "package",
+        "container",
+        "dataset"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "\\S"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "\\S"
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "\\S"
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "artifact": {
+      "$ref": "#/$defs/artifact"
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    },
+    "license": {
+      "$ref": "#/$defs/license"
+    },
+    "dependencies": {
+      "type": "array",
+      "uniqueItems": true,
+      "maxItems": 1000,
+      "items": {
+        "$ref": "#/$defs/componentIdentifier"
+      }
+    },
+    "governance": {
+      "$ref": "#/$defs/governance"
+    },
+    "inventory_status": {
+      "type": "string",
+      "const": "unverified",
+      "description": "Initial registration cannot self-assert verified inventory status."
+    }
+  },
+  "$defs": {
+    "componentIdentifier": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 64,
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_type",
+        "uri",
+        "publisher"
+      ],
+      "properties": {
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "registry",
+            "repository",
+            "internal",
+            "generated"
+          ]
+        },
+        "uri": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048,
+          "pattern": "\\S",
+          "description": "Declared source locator. No network retrieval or trust validation is implied."
+        },
+        "publisher": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "\\S"
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "filename",
+        "media_type",
+        "digest_algorithm",
+        "expected_digest",
+        "size_bytes"
+      ],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255,
+          "pattern": "^[^/\\\\]+$",
+          "description": "Single artifact filename, not a filesystem path."
+        },
+        "media_type": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 160,
+          "pattern": "^[A-Za-z0-9!#$&^_.+-]+/[A-Za-z0-9!#$&^_.+-]+$"
+        },
+        "digest_algorithm": {
+          "type": "string",
+          "const": "sha256"
+        },
+        "expected_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "Untrusted declared digest until checked against a protected trusted reference."
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claimed_builder",
+        "claimed_source_revision",
+        "attestation_reference",
+        "verification_status"
+      ],
+      "properties": {
+        "claimed_builder": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "\\S"
+        },
+        "claimed_source_revision": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "\\S"
+        },
+        "attestation_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 2048,
+          "pattern": "\\S"
+        },
+        "verification_status": {
+          "type": "string",
+          "const": "unverified",
+          "description": "Trusted provenance verification must occur outside registration."
+        }
+      }
+    },
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifier",
+        "review_status"
+      ],
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "\\S"
+        },
+        "review_status": {
+          "type": "string",
+          "const": "unreviewed",
+          "description": "Registration cannot authorize license approval."
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "risk_owner",
+        "criticality",
+        "data_classification",
+        "risk_acceptance_status"
+      ],
+      "properties": {
+        "risk_owner": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "\\S"
+        },
+        "criticality": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "data_classification": {
+          "type": "string",
+          "enum": [
+            "public",
+            "internal",
+            "confidential",
+            "restricted"
+          ]
+        },
+        "risk_acceptance_status": {
+          "type": "string",
+          "const": "not_assessed",
+          "description": "Registration cannot accept organizational risk."
+        }
+      }
+    }
+  }
+}

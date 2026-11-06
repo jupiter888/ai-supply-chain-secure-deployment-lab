@@ -1,0 +1,6 @@
+
+# Project 8 — AI Supply Chain & Secure Deployment Security Lab
+# Python dependency for JSON Schema Draft 2020-12 validation.
+# Standard-library modules require no additional installation.
+
+jsonschema>=4.23,<5
