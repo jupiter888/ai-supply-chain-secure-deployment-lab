@@ -1,4 +1,4 @@
-# AI Supply Chain & Secure Deployment Security Lab
+# Project 8 — AI Supply Chain & Secure Deployment Security Lab
 
 **Security Architecture | Supply Chain Assurance | Release Governance**
 
