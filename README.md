@@ -3,7 +3,7 @@
 **Security Architecture | Supply Chain Assurance | Release Governance**
 
 ## Overview
--
+
 An implementation-focused security laboratory demonstrating the validation, integrity verification, provenance assessment, and controlled deployment of AI supply-chain components.
 
 The project implements a local, offline security-control pipeline that evaluates component inventories, artifact integrity, provenance evidence, vulnerability findings, and release eligibility. A separate governance layer enforces authorization, scoped risk acceptance, and trusted release requirements before simulated deployment or rollback.
