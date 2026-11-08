@@ -1,43 +1,24 @@
 # AI Supply Chain & Secure Deployment Security Lab
 
-**Project 8 — AI Security Architecture Portfolio**
+**Security Architecture | Supply Chain Assurance | Release Governance**
 
-An architecture-level security laboratory demonstrating how AI supply-chain components can be inventoried, evaluated, authenticated against trusted release references, and subjected to explicit security governance before simulated deployment or rollback.
+An implementation-focused security laboratory demonstrating the validation, integrity verification, provenance assessment, and controlled deployment of AI supply-chain components.
 
-The project implements a local, offline security-control pipeline covering component validation, artifact integrity, provenance, vulnerability assessment, release policy, trusted release registration, risk acceptance, and controlled release transitions.
+The project implements a local, offline security-control pipeline that evaluates component inventories, artifact integrity, provenance evidence, vulnerability findings, and release eligibility. A separate governance layer enforces authorization, scoped risk acceptance, and trusted release requirements before simulated deployment or rollback.
 
-**Validation:** 242 automated tests passing.  
-**Environment:** Python 3.11, JSON Schema Draft 2020-12, synthetic artifacts, local filesystem.  
-**Deployment:** Simulated; no production cloud infrastructure.
+**Key Capabilities**
+- AI component inventory and dependency validation
+- SHA-256 artifact integrity and provenance verification
+- Vulnerability assessment and policy-based release decisions
+- Trusted release registration and governance authorization
+- Risk acceptance with scope, ownership, and expiration enforcement
+- Verified deployment and independently authorized rollback
+- Adversarial security testing and audit evidence
 
----
+**Validation:** 242 automated tests passing  
+**Environment:** Python 3.11 · JSON Schema Draft 2020-12 · Synthetic artifacts  
+**Deployment:** Local simulation; no production cloud infrastructure
 
-## 1. Executive Summary
-
-AI applications introduce supply-chain risks across models, software dependencies, container images, datasets, and the systems responsible for deploying them.
-
-A valid component manifest does not establish artifact authenticity. A clean vulnerability report does not independently establish release eligibility. A technically eligible release does not establish organizational authorization.
-
-This project addresses those distinctions through independently evaluated security controls.
-
-The laboratory demonstrates:
-
-- Strict registration of AI supply-chain components.
-- Dependency-graph validation.
-- Cryptographic artifact integrity verification.
-- Separate provenance assessment.
-- Vulnerability and coverage evaluation.
-- Component-level and aggregate release policy.
-- Trusted release registration.
-- Machine-verifiable governance authorization.
-- Explicit, scoped, time-limited risk acceptance.
-- Controlled simulated deployment and rollback.
-- Deterministic decision evidence and chained audit records.
-- Adversarial validation of selected security boundaries.
-
-The architecture separates technical security evaluation from organizational risk acceptance and release authorization.
-
-All artifacts, identities, findings, and release operations are synthetic.
 
 ## 2. Security Problem
 
